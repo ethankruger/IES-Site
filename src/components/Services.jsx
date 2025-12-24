@@ -10,7 +10,7 @@ const servicesData = [
         title: 'Maintenance',
         description: 'Keep your electrical systems running smoothly',
         icon: Wrench,
-        image: '/images/services/maintenance.jpg',
+        image: `${import.meta.env.BASE_URL}images/services/maintenance.jpg`,
         services: [
             'Maintain Power Outlets & Switches',
             'Electrical Connection Checks',
@@ -22,7 +22,7 @@ const servicesData = [
         title: 'Trouble Shooting',
         description: 'Quick diagnosis and resolution of electrical issues',
         icon: Zap,
-        image: '/images/services/troubleshooting.jpg',
+        image: `${import.meta.env.BASE_URL}images/services/troubleshooting.jpg`,
         services: [
             'Loose Power Outlets',
             'Broken Light Switches',
@@ -40,7 +40,7 @@ const servicesData = [
         title: 'Home Electrical Inspections',
         description: 'Comprehensive electrical safety assessments',
         icon: Search,
-        image: '/images/services/inspections.jpg',
+        image: `${import.meta.env.BASE_URL}images/services/inspections.jpg`,
         services: [
             'Electrical inspection for home buyers prior to purchase'
         ]
@@ -50,7 +50,7 @@ const servicesData = [
         title: 'Upgrades',
         description: 'Modernize your electrical infrastructure',
         icon: TrendingUp,
-        image: '/images/services/upgrades.jpg',
+        image: `${import.meta.env.BASE_URL}images/services/upgrades.jpg`,
         services: [
             'LED Upgrades',
             'New Fixtures',
@@ -65,7 +65,7 @@ const servicesData = [
         title: 'Installs',
         description: 'Professional installation services',
         icon: Plug,
-        image: '/images/services/installs.jpg',
+        image: `${import.meta.env.BASE_URL}images/services/installs.jpg`,
         services: [
             'Additional Lighting',
             'Additional Fixtures',
@@ -79,7 +79,7 @@ const servicesData = [
         title: 'More',
         description: 'Additional specialized services',
         icon: Plus,
-        image: '/images/services/more.jpg',
+        image: `${import.meta.env.BASE_URL}images/services/more.jpg`,
         services: [
             'Circuit Mapping',
             'Panel Mapping & Labeling',
