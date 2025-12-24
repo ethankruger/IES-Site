@@ -26,7 +26,9 @@ const ServiceModal = ({ service, onClose }) => {
                     </button>
 
                     <div className="modal-header">
-                        <div className="modal-icon">{service.icon}</div>
+                        <div className="modal-icon">
+                            <service.icon size={56} strokeWidth={2} />
+                        </div>
                         <h3 className="modal-title">{service.title}</h3>
                         <p className="modal-description">{service.description}</p>
                     </div>

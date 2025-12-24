@@ -90,6 +90,7 @@ const servicesData = [
 
 const Services = () => {
     const [selectedService, setSelectedService] = useState(null);
+    const [viewMode, setViewMode] = useState('scroll'); // 'scroll' or 'grid'
 
     return (
         <section className="services section" id="services">
@@ -105,16 +106,31 @@ const Services = () => {
                     <p className="section-subtitle">
                         Comprehensive electrical solutions for your home
                     </p>
+                    <div className="view-toggle">
+                        <button
+                            className={`view-toggle-btn ${viewMode === 'scroll' ? 'active' : ''}`}
+                            onClick={() => setViewMode('scroll')}
+                        >
+                            Scroll View
+                        </button>
+                        <button
+                            className={`view-toggle-btn ${viewMode === 'grid' ? 'active' : ''}`}
+                            onClick={() => setViewMode('grid')}
+                        >
+                            Grid View
+                        </button>
+                    </div>
                 </motion.div>
 
-                <motion.div
-                    className="services-scroll-container"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                    <div className="services-scroll">
+                {viewMode === 'scroll' ? (
+                    <motion.div
+                        className="services-scroll-container"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        <div className="services-scroll">
                         {servicesData.map((service, index) => (
                             <motion.div
                                 key={service.id}
@@ -152,6 +168,45 @@ const Services = () => {
                         ))}
                     </div>
                 </motion.div>
+                ) : (
+                    <div className="services-grid-container">
+                        {servicesData.map((service, index) => (
+                            <motion.div
+                                key={service.id}
+                                className="service-card card"
+                                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{
+                                    delay: index * 0.1,
+                                    duration: 0.6,
+                                    ease: [0.25, 0.46, 0.45, 0.94]
+                                }}
+                                whileHover={{
+                                    y: -12,
+                                    scale: 1.03,
+                                    transition: { duration: 0.3 }
+                                }}
+                                onClick={() => setSelectedService(service)}
+                            >
+                                <div className="service-image" style={{ backgroundImage: `url(${service.image})` }}></div>
+                                <div className="service-content">
+                                    <div className="service-icon">
+                                        <service.icon size={48} strokeWidth={2} />
+                                    </div>
+                                    <h3 className="service-title">{service.title}</h3>
+                                    <p className="service-description">{service.description}</p>
+                                    <div className="service-count">
+                                        {service.services.length} service{service.services.length !== 1 ? 's' : ''}
+                                    </div>
+                                    <button className="service-btn">
+                                        View Details →
+                                    </button>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                )}
             </div>
 
             <ServiceModal
